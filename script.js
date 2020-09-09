@@ -720,7 +720,6 @@ function generateAlbumCover() {
                 if (image.height > canvas.height) {
                     scaleFactor = Math.max(scaleFactor, canvas.height / image.height);
                 }
-                console.log(`Image is ${image.width} x ${image.height}, scaling by ${scaleFactor}`);
                 // Draw the image
                 const scaledWidth = scaleFactor * image.width;
                 const scaledHeight = scaleFactor * image.height;
