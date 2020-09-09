@@ -1,0 +1,99 @@
+.btn {
+    width: 50%;
+    float:left;
+}
+
+.submissionForm {
+    margin-top: 20px;
+    text-align: center;
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+}
+
+.items {
+    margin-left: 25%;
+    margin-bottom: 20px;
+}
+
+.submitBtn {
+    text-align: center;
+}
+
+h1, h2, h3, p {
+    font-family: "Arial";
+}
+
+h1, h2, h3 {
+    font-weight: bold;
+}
+
+label {
+    font-family: "Arial";
+    font-weight: bold;
+}
+
+input {
+    font-family: "Arial";
+    width: 100px;
+}
+
+#submitBtn {
+    margin-top: 20px;
+}
+
+form {
+    padding-left: 25%;
+    padding-right: 25%;
+    padding-bottom: 10px;
+}
+
+.bandName {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.imgContainer {
+    width: 500px;
+    height: 500px;
+    margin: auto;
+    border: 1px solid;
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+}
+
+.imgContainer .text {
+    position: absolute;
+    z-index: 999;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 350px; /* Adjust this value to move the positioned div up and down */
+    text-align: center;
+    width: 60%;
+    color: white;
+    text-shadow: 2px 2px black;
+}
+
+#albumCover {
+    height: 100%;
+}
+
+/*
+    MOBILE LOOK
+*/
+@media (max-width:750px) {
+    .imgContainer {
+        width: 250px;
+        height: 250px;
+    }
+
+    .imgContainer .text {
+        top: 150px;
+    }
+
+    #band {
+        font-size: 20px;
+    }
+}
