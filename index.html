@@ -6,34 +6,23 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
-
         <link href="style.css" rel="stylesheet">
-
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-	<script src="script.js"></script>
-
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+        <script src="script.js"></script>
         <title>Rachel Beard</title>
-
     </head>
-<body>
-<div class="submissionForm">
-    <h1>click the button, get an album cover</h1>
-        <form id="frm1">
+    <body>
+        <div class="submissionForm">
+            <h1>click the button, get an album cover</h1>
+            <form id="frm1">
+                <div class="submitBtn">
+                    <input id="submitBtn" type="button" value="album me!">
+                </div>
+            </form>
+        </div>
 
-	<div class="submitBtn">
-        	<input id="submitBtn" type="button" onclick="submitForm()" value="album me!">
-	</div>
-
-	</form>
-</div>
-
-<div class="bandName">
-  <canvas id="album-cover" width="500" height="500"></canvas>
-</div>
-
-</body>
-
-<footer>
-</footer>
-
+        <div class="bandName">
+            <canvas id="album-cover" width="500" height="500"></canvas>
+        </div>
+    </body>
 </html>

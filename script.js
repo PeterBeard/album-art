@@ -690,7 +690,7 @@ const keywords = [
 ];
 
 // call from button
-function submitForm() {
+function generateAlbumCover() {
     const bandName = names[Math.floor(Math.random() * names.length)];
     const keyword = keywords[Math.floor(Math.random() * keywords.length)];
     $.getJSON(
@@ -751,3 +751,7 @@ function submitForm() {
         }
     );
 }
+$(document).ready(() => {
+    $('#submitBtn').click(generateAlbumCover);
+    generateAlbumCover();
+});
