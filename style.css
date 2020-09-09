@@ -52,28 +52,8 @@ form {
     margin-top: 20px;
 }
 
-.imgContainer {
-    width: 500px;
-    height: 500px;
-    margin: auto;
-    border: 1px solid;
-    overflow: hidden;
-    text-align: center;
-    position: relative;
-    display: inline-block;
-}
-
-.imgContainer .text {
-    position: absolute;
-    z-index: 999;
-    margin: 0 auto;
-    left: 0;
-    right: 0;
-    top: 350px; /* Adjust this value to move the positioned div up and down */
-    text-align: center;
-    width: 60%;
-    color: white;
-    text-shadow: 2px 2px black;
+#album-cover {
+    border: 1px solid #000;
 }
 
 #albumCover {

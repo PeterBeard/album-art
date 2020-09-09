@@ -522,22 +522,63 @@ var keywords =
 
 // call from button
 function submitForm() {
-	var newhtml = names[Math.floor(Math.random() * names.length)];
-	document.getElementById("band").innerHTML = newhtml;
-
-	var keyword = keywords[Math.floor(Math.random() * keywords.length)];
-
-	$.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?",
-	{
-		tags: keyword,
-		tagmode: "any",
-		format: "json"
+    var newhtml = names[Math.floor(Math.random() * names.length)];
+    var keyword = keywords[Math.floor(Math.random() * keywords.length)];
+    $.getJSON(
+        "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?",
+        {
+            tags: keyword,
+            tagmode: "any",
+            format: "json"
         },
         function(data) {
-		var rnd = Math.floor(Math.random() * data.items.length);
+            var rnd = Math.floor(Math.random() * data.items.length);
 
-		var image_src = data.items[rnd]['media']['m'].replace("_m", "_b");
+            var image_src = data.items[rnd]['media']['m'].replace("_m", "_b");
 
-		document.getElementById("albumCover").src = image_src;
-        });
+            const canvas = document.getElementById('album-cover');
+            const context = canvas.getContext('2d');
+            const image = new Image();
+            image.onload = function() {
+                // Clear the canvas
+                context.fillStyle = 'white';
+                context.fillRect(0, 0, canvas.width, canvas.height);
+                // Scale the image down to fit it on the canvas
+                let scaleFactor = 1.0;
+                if (image.width > canvas.width) {
+                    scaleFactor = canvas.width / image.width;
+                }
+                if (image.height > canvas.height) {
+                    scaleFactor = Math.max(scaleFactor, canvas.height / image.height);
+                }
+                console.log(`Image is ${image.width} x ${image.height}, scaling by ${scaleFactor}`);
+                // Draw the image
+                const scaledWidth = scaleFactor * image.width;
+                const scaledHeight = scaleFactor * image.height;
+                const imageX = Math.max(0, (canvas.width - scaledWidth) / 2);
+                const imageY = Math.max(0, (canvas.height - scaledHeight) / 2);
+                context.drawImage(image, imageX, imageY, scaledWidth, scaledHeight);
+                // Render the text
+                const fontSize = 30;
+                const shadowOffsetX = 3;
+                const shadowOffsetY = 2;
+                context.font = `bold ${fontSize}px Helvetica, Arial, sans-serif`;
+                const textWidth = context.measureText(newhtml, 0.8*canvas.width).width;
+                const textX = (canvas.width - textWidth) / 2;
+                const textY = canvas.height - 3.5 * fontSize;
+                // Draw the shadow first
+                context.fillStyle = 'black';
+                context.fillText(
+                    newhtml,
+                    textX + shadowOffsetX,
+                    textY + shadowOffsetY,
+                    0.8*canvas.width
+                );
+                // Then render the actual text in white
+                context.fillStyle = 'white';
+                context.fillText(newhtml, textX, textY, 0.8*canvas.width);
+            };
+            image.src = image_src;
+        }
+    );
 }
